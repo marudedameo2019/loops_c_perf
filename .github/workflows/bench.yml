@@ -1,0 +1,31 @@
+name: Run Benchmark
+
+on:
+  push:
+    branches:
+      - main # mainブランチへのプッシュ時に実行
+
+permissions:
+  contents: write # リポジトリへの書き込み権限を許可
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run benchmark script
+        run: |
+          sh ./hoge.sh
+
+      - name: Move files
+        run: |
+          mkdir -p examples
+          mv *.csv examples/
+
+      - name: Commit and push HTML results
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update results'
+          file_pattern: 'examples/*.csv'
