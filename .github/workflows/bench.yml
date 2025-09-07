@@ -31,6 +31,7 @@ jobs:
           file_pattern: 'examples/ubuntu_latest.csv'
   benchmark_macos:
     runs-on: macos-latest
+    needs: benchmark_ubuntu
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
