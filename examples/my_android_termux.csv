@@ -1,0 +1,5 @@
+Zcompiler,arch,processor,faster,count,mean
+Clang 20.1.7,ARM64,Kryo-4XX-Silver,faster,23,133
+Clang 20.1.7,ARM64,Kryo-4XX-Silver,original,37,81
+Clang 20.1.7,ARM64,Kryo-4XX-Silver,faster,23,134
+Clang 20.1.7,ARM64,Kryo-4XX-Silver,original,37,81
