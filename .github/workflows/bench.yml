@@ -3,10 +3,10 @@ name: Run Benchmark
 on:
   push:
     branches:
-      - main # mainブランチへのプッシュ時に実行
+      - main
 
 permissions:
-  contents: write # リポジトリへの書き込み権限を許可
+  contents: write
 
 jobs:
   benchmark_ubuntu:
@@ -14,39 +14,47 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Run benchmark script
-        run: |
-          sh ./hoge.sh
-
-      - name: Move files
+        run: sh ./hoge.sh
+      - name: Move and save files
         run: |
           mkdir -p examples
           mv *.csv examples/ubuntu_latest.csv
-
-      - name: Commit and push HTML results
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
         with:
-          commit_message: 'Update results'
-          file_pattern: 'examples/ubuntu_latest.csv'
+          name: ubuntu-benchmark-results
+          path: examples/ubuntu_latest.csv
+
   benchmark_macos:
     runs-on: macos-latest
-    needs: benchmark_ubuntu
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Run benchmark script
-        run: |
-          sh ./hoge.sh
-
-      - name: Move files
+        run: sh ./hoge.sh
+      - name: Move and save files
         run: |
           mkdir -p examples
           mv *.csv examples/macos_latest.csv
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-benchmark-results
+          path: examples/macos_latest.csv
 
-      - name: Commit and push HTML results
+  commit_results:
+    runs-on: ubuntu-latest
+    needs: [benchmark_ubuntu, benchmark_macos] # 両方のベンチマークジョブが完了するのを待機
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download all benchmark results
+        uses: actions/download-artifact@v4
+        with:
+          path: examples
+      - name: Commit and push results
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Update results'
-          file_pattern: 'examples/macos_latest.csv'
+          commit_message: 'Update benchmark results'
+          file_pattern: 'examples/*.csv'
