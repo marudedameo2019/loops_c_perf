@@ -9,7 +9,7 @@ permissions:
   contents: write # リポジトリへの書き込み権限を許可
 
 jobs:
-  benchmark:
+  benchmark_ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,10 +22,30 @@ jobs:
       - name: Move files
         run: |
           mkdir -p examples
-          mv *.csv examples/
+          mv *.csv examples/ubuntu_latest.csv
 
       - name: Commit and push HTML results
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update results'
-          file_pattern: 'examples/*.csv'
+          file_pattern: 'examples/ubuntu_latest.csv'
+  benchmark_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run benchmark script
+        run: |
+          sh ./hoge.sh
+
+      - name: Move files
+        run: |
+          mkdir -p examples
+          mv *.csv examples/macos_latest.csv
+
+      - name: Commit and push HTML results
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update results'
+          file_pattern: 'examples/macos_latest.csv'
