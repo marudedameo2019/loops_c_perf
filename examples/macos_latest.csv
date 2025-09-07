@@ -1,5 +1,5 @@
 compiler,arch,processor,faster,count,mean
 Clang 17.0.0,ARM64,,faster,29,104
 Clang 17.0.0,ARM64,,original,73,41
-Clang 17.0.0,ARM64,,faster,29,106
-Clang 17.0.0,ARM64,,original,72,41
+Clang 17.0.0,ARM64,,faster,31,99
+Clang 17.0.0,ARM64,,original,75,40
