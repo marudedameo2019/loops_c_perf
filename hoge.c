@@ -74,7 +74,11 @@ int main() {
   }
   printf("%s,%s,", get_compiler_str(), get_arch_str());
   fflush(stdout);
+#if defined(__linux__)
   system("lscpu --extended=MODELNAME | awk -F: 'NR==2 {print $1; exit}' | tr -d '\\n'");
+#else
+  system("sysctl -n machdep.cpu.brand_string");
+#endif
 #if defined(FASTER_CODE)
   static const char is_faster_str[] = {"faster"};
 #else
