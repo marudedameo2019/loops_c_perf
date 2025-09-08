@@ -77,7 +77,7 @@ int main() {
 #if defined(__linux__)
   system("lscpu --extended=MODELNAME | awk -F: 'NR==2 {print $1; exit}' | tr -d '\\n'");
 #else
-  system("sysctl -n machdep.cpu.brand_string");
+  system("sysctl -n machdep.cpu.brand_string | tr -d '\\n'");
 #endif
 #if defined(FASTER_CODE)
   static const char is_faster_str[] = {"faster"};
