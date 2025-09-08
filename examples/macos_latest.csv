@@ -1,9 +1,5 @@
 compiler,arch,processor,faster,count,mean
-Clang 17.0.0,ARM64,Apple M1 (Virtual)
-,faster,32,94
-Clang 17.0.0,ARM64,Apple M1 (Virtual)
-,original,78,38
-Clang 17.0.0,ARM64,Apple M1 (Virtual)
-,faster,32,95
-Clang 17.0.0,ARM64,Apple M1 (Virtual)
-,original,80,37
+Clang 17.0.0,ARM64,Apple M1 (Virtual),faster,29,103
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,68,44
+Clang 17.0.0,ARM64,Apple M1 (Virtual),faster,29,106
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,68,44
