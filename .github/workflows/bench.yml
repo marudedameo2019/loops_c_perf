@@ -26,7 +26,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ubuntu-benchmark-results
-          path: examples/ubuntu_latest.csv
+          path: |
+            examples/ubuntu_latest.csv
+            examples/ubuntu_latest_*.S
 
   benchmark_macos:
     runs-on: macos-latest
@@ -45,7 +47,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: macos-benchmark-results
-          path: examples/macos_latest.csv
+          path: |
+            examples/macos_latest.csv
+            examples/macos_latest_*.S
 
   commit_results:
     runs-on: ubuntu-latest
@@ -62,4 +66,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update benchmark results'
-          file_pattern: 'examples/*.csv'
+          file_pattern: |
+            examples/*.csv
+            examples/*.S
