@@ -9,7 +9,7 @@ for compiler in gcc clang; do
     fi
     exe="hoge_${compiler}_${faster_str}"
     "$compiler" "$faster" -g -O3 hoge.c -o "$exe"
-    objdump --visualize-jumps -SDC "$exe" > "${exe}.S"
+    objdump -SDC "$exe" > "${exe}.S"
     "./${exe}"
   done
 done | tee -a $FILE
