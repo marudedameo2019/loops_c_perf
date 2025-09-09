@@ -20,6 +20,8 @@ jobs:
         run: |
           mkdir -p examples
           mv *.csv examples/ubuntu_latest.csv
+          for f in *.S;do mv "$f" "ubuntu_latest_$f";done
+          mv *.S examples/
       - name: Upload benchmark artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -37,6 +39,8 @@ jobs:
         run: |
           mkdir -p examples
           mv *.csv examples/macos_latest.csv
+          for f in *.S;do mv "$f" "macos_latest_$f";done
+          mv *.S examples/
       - name: Upload benchmark artifacts
         uses: actions/upload-artifact@v4
         with:
