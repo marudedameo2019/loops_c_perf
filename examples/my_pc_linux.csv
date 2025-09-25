@@ -1,5 +1,7 @@
-compiler,arch,processor,faster,count,mean
-GCC 15.2,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,faster,84,36
-GCC 15.2,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,original,6,563
-Clang 20.1.8,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,faster,76,39
-Clang 20.1.8,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,original,61,49
+compiler,arch,processor,case,count,mean
+GCC 15.2,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,loop_unrolling,6,524
+GCC 15.2,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,nodiv,89,34
+GCC 15.2,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,original,6,524
+Clang 20.1.8,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,loop_unrolling,6,526
+Clang 20.1.8,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,nodiv,81,37
+Clang 20.1.8,x86-64,AMD Ryzen 5 1400 Quad-Core Processor,original,6,523

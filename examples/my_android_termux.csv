@@ -1,5 +1,7 @@
-Zcompiler,arch,processor,faster,count,mean
-Clang 20.1.7,ARM64,Kryo-4XX-Silver,faster,23,133
-Clang 20.1.7,ARM64,Kryo-4XX-Silver,original,37,81
-Clang 20.1.7,ARM64,Kryo-4XX-Silver,faster,23,134
-Clang 20.1.7,ARM64,Kryo-4XX-Silver,original,37,81
+compiler,arch,processor,case,count,mean
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,loop_unrolling,11,277
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,nodiv,23,134
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,original,11,292
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,loop_unrolling,11,278
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,nodiv,23,134
+Clang 20.1.7,ARM64,Kryo-4XX-SilverKryo-4XX-Gold,original,11,293
