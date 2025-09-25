@@ -51,13 +51,18 @@ Disassembly of section .note.gnu.build-id:
  372:	00 00                	add    %al,(%rax)
  374:	47                   	rex.RXB
  375:	4e 55                	rex.WRX push %rbp
- 377:	00 57 ba             	add    %dl,-0x46(%rdi)
- 37a:	bd 1a f9 4e 7c       	mov    $0x7c4ef91a,%ebp
- 37f:	f3 36 39 43 f5       	repz ss cmp %eax,-0xb(%rbx)
- 384:	8b 5e 9b             	mov    -0x65(%rsi),%ebx
- 387:	cf                   	iret
- 388:	3b 08                	cmp    (%rax),%ecx
- 38a:	d3 c5                	rol    %cl,%ebp
+ 377:	00 23                	add    %ah,(%rbx)
+ 379:	e1 e3                	loope  35e <__abi_tag-0x2e>
+ 37b:	20 0d 8b b2 5d 67    	and    %cl,0x675db28b(%rip)        # 675db60c <_end+0x675d75ec>
+ 381:	ab                   	stos   %eax,%es:(%rdi)
+ 382:	98                   	cwtl
+ 383:	27                   	(bad)
+ 384:	08 6e 6a             	or     %ch,0x6a(%rsi)
+ 387:	a2                   	.byte 0xa2
+ 388:	cc                   	int3
+ 389:	cf                   	iret
+ 38a:	3a                   	.byte 0x3a
+ 38b:	45                   	rex.RB
 
 Disassembly of section .note.ABI-tag:
 
@@ -1947,7 +1952,7 @@ Disassembly of section .debug_info:
  436:	00 00                	add    %al,(%rax)
  438:	24 63                	and    $0x63,%al
  43a:	73 00                	jae    43c <__abi_tag+0xb0>
- 43c:	01 46 15             	add    %eax,0x15(%rsi)
+ 43c:	01 48 15             	add    %ecx,0x15(%rax)
  43f:	cf                   	iret
  440:	06                   	(bad)
  441:	00 00                	add    %al,(%rax)
@@ -2161,8 +2166,8 @@ Disassembly of section .debug_info:
  638:	00 02                	add    %al,(%rdx)
  63a:	1f                   	(bad)
  63b:	00 00                	add    %al,(%rax)
- 63d:	00 4a 03             	add    %cl,0x3(%rdx)
- 640:	85 06                	test   %eax,(%rsi)
+ 63d:	00 4c 03 85          	add    %cl,-0x7b(%rbx,%rax,1)
+ 641:	06                   	(bad)
  642:	00 00                	add    %al,(%rax)
  644:	19 72 07             	sbb    %esi,0x7(%rdx)
  647:	00 00                	add    %al,(%rax)
@@ -2409,17 +2414,16 @@ Disassembly of section .debug_info:
  87a:	0b 5c 00 00          	or     0x0(%rax,%rax,1),%ebx
  87e:	00 02                	add    %al,(%rdx)
  880:	6a 00                	push   $0x0
- 882:	0e                   	(bad)
- 883:	0e                   	(bad)
+ 882:	1c 0e                	sbb    $0xe,%al
  884:	64 00 00             	add    %al,%fs:(%rax)
  887:	00 7d 01             	add    %bh,0x1(%rbp)
  88a:	00 00                	add    %al,(%rax)
  88c:	7b 01                	jnp    88f <__abi_tag+0x503>
  88e:	00 00                	add    %al,(%rax)
  890:	02 6b 00             	add    0x0(%rbx),%ch
- 893:	0e                   	(bad)
- 894:	15 64 00 00 00       	adc    $0x64,%eax
- 899:	7d 01                	jge    89c <__abi_tag+0x510>
+ 893:	1c 15                	sbb    $0x15,%al
+ 895:	64 00 00             	add    %al,%fs:(%rax)
+ 898:	00 7d 01             	add    %bh,0x1(%rbp)
  89b:	00 00                	add    %al,(%rax)
  89d:	7b 01                	jnp    8a0 <__abi_tag+0x514>
  89f:	00 00                	add    %al,(%rax)
@@ -2981,27 +2985,26 @@ Disassembly of section .debug_line:
  16a:	01 08                	add    %ecx,(%rax)
  16c:	f2 04 01             	repnz add $0x1,%al
  16f:	05 03 06 03 67       	add    $0x67030603,%eax
- 174:	01 bc c1 16 04 02 05 	add    %edi,0x5020416(%rcx,%rax,8)
- 17b:	01 03                	add    %eax,(%rbx)
- 17d:	0a 01                	or     (%rcx),%al
- 17f:	05 03 14 04 01       	add    $0x1041403,%eax
- 184:	05 2a 06 03 74       	add    $0x7403062a,%eax
+ 174:	01 bc 03 09 ba 16 04 	add    %edi,0x416ba09(%rbx,%rax,1)
+ 17b:	02 05 01 1a 05 03    	add    0x3051a01(%rip),%al        # 3051b82 <_end+0x304db62>
+ 181:	14 04                	adc    $0x4,%al
+ 183:	01 05 2a 06 03 76    	add    %eax,0x7603062a(%rip)        # 760307b3 <_end+0x7602c793>
  189:	01 04 02             	add    %eax,(%rdx,%rax,1)
- 18c:	05 0a 03 0c 66       	add    $0x660c030a,%eax
+ 18c:	05 0a 03 0a 66       	add    $0x660a030a,%eax
  191:	04 01                	add    $0x1,%al
- 193:	05 2a 03 74 58       	add    $0x5874032a,%eax
+ 193:	05 2a 03 76 58       	add    $0x5876032a,%eax
  198:	04 02                	add    $0x2,%al
- 19a:	05 0a 03 0c 2e       	add    $0x2e0c030a,%eax
+ 19a:	05 0a 03 0a 2e       	add    $0x2e0a030a,%eax
  19f:	04 01                	add    $0x1,%al
- 1a1:	05 2a 03 74 74       	add    $0x7474032a,%eax
+ 1a1:	05 2a 03 76 74       	add    $0x7476032a,%eax
  1a6:	05 03 3c 04 02       	add    $0x2043c03,%eax
- 1ab:	05 0a 03 0c 9e       	add    $0x9e0c030a,%eax
+ 1ab:	05 0a 03 0a 9e       	add    $0x9e0a030a,%eax
  1b0:	04 01                	add    $0x1,%al
- 1b2:	05 03 03 74 2e       	add    $0x2e740303,%eax
+ 1b2:	05 03 03 76 2e       	add    $0x2e760303,%eax
  1b7:	04 02                	add    $0x2,%al
- 1b9:	05 0a 03 0c 3c       	add    $0x3c0c030a,%eax
+ 1b9:	05 0a 03 0a 3c       	add    $0x3c0a030a,%eax
  1be:	08 4a 04             	or     %cl,0x4(%rdx)
- 1c1:	01 05 01 03 75 01    	add    %eax,0x1750301(%rip)        # 17504c8 <_end+0x174c4a8>
+ 1c1:	01 05 01 03 77 01    	add    %eax,0x1770301(%rip)        # 17704c8 <_end+0x176c4a8>
  1c7:	08 66 58             	or     %ah,0x58(%rsi)
  1ca:	2e 2e 20 02          	cs cs and %al,(%rdx)
  1ce:	05 00 01 01 e5       	add    $0xe5010100,%eax
@@ -3054,9 +3057,9 @@ Disassembly of section .debug_line:
  252:	05 19 06 02 25       	add    $0x25020619,%eax
  257:	10 05 1e 00 02 04    	adc    %al,0x402001e(%rip)        # 402027b <_end+0x401c25b>
  25d:	01 06                	add    %eax,(%rsi)
- 25f:	03 0a                	add    (%rdx),%ecx
- 261:	4a 05 19 06 03 76    	rex.WX add $0x76030619,%rax
- 267:	4a 05 07 06 03 0b    	rex.WX add $0xb030607,%rax
+ 25f:	03 18                	add    (%rax),%ebx
+ 261:	4a 05 19 06 03 68    	rex.WX add $0x68030619,%rax
+ 267:	4a 05 07 06 03 19    	rex.WX add $0x19030607,%rax
  26d:	08 2e                	or     %ch,(%rsi)
  26f:	05 17 06 01 05       	add    $0x5010617,%eax
  274:	2d 00 02 04 02       	sub    $0x2040200,%eax
@@ -3070,10 +3073,10 @@ Disassembly of section .debug_line:
  293:	06                   	(bad)
  294:	01 05 1f 00 02 04    	add    %eax,0x402001f(%rip)        # 40202b9 <_end+0x401c299>
  29a:	02 06                	add    (%rsi),%al
- 29c:	03 70 ba             	add    -0x46(%rax),%esi
+ 29c:	03 62 ba             	add    -0x46(%rdx),%esp
  29f:	05 15 00 02 04       	add    $0x4020015,%eax
  2a4:	01 01                	add    %eax,(%rcx)
- 2a6:	05 03 03 12 58       	add    $0x58120303,%eax
+ 2a6:	05 03 03 20 58       	add    $0x58200303,%eax
  2ab:	05 0b 06 01 05       	add    $0x501060b,%eax
  2b0:	01 3d 08 9e 20 20    	add    %edi,0x20209e08(%rip)        # 2020a0be <_end+0x2020609e>
  2b6:	02                   	.byte 0x2

@@ -1,7 +1,9 @@
 compiler,arch,processor,case,count,mean
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,32,93
-Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,24,126
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,33,91
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,35,85
-Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,23,132
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,27,113
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,31,98
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,39,78
+Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,29,104
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,42,72
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,29,105
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,45,67
+Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,30,102
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,45,67
