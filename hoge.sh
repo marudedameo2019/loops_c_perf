@@ -1,18 +1,28 @@
+is_real() {
+  compiler=$1
+  echo "$(readlink -f "$(command -v $compiler)")" | grep "$compiler" >/dev/null
+  return $?
+}
+
 FILE="hoge.csv"
 echo "compiler,arch,processor,case,count,mean" | tee $FILE
 for compiler in gcc clang; do
-  for c in "-DLOOP_UNROLL" "-DNO_DIV" "-DDUMMY"; do
-    if [ "$c" = "-DLOOP_UNROLL" ]; then
-      nodiv_str=loopunroll
-    elif [ "$c" = "-DNO_DIV" ]; then
-      nodiv_str=nodiv
-    else
-      nodiv_str=original
-    fi
-    exe="hoge_${compiler}_${nodiv_str}"
-    "$compiler" "$c" -g -O3 hoge.c loops.c -o "$exe"
-    objdump -SDC "$exe" > "${exe}.S"
-    "./${exe}"
-  done
+  if is_real "$compiler"; then
+    for c in "-DLOOP_UNROLL_NO_DIV" "-DLOOP_UNROLL" "-DNO_DIV" "-DDUMMY"; do
+      if [ "$c" = "-DLOOP_UNROLL_NO_DIV" ]; then
+        nodiv_str=loopunrollnodiv
+      elif [ "$c" = "-DLOOP_UNROLL" ]; then
+        nodiv_str=loopunroll
+      elif [ "$c" = "-DNO_DIV" ]; then
+        nodiv_str=nodiv
+      else
+        nodiv_str=original
+      fi
+      exe="hoge_${compiler}_${nodiv_str}"
+      "$compiler" "$c" -g -O3 hoge.c loops.c -o "$exe"
+      objdump -SDC "$exe" > "${exe}.S"
+      "./${exe}"
+    done
+  fi
 done | tee -a $FILE
 

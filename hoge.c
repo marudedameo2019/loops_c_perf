@@ -64,7 +64,9 @@ int main(void) {
 #else
   system("sysctl -n machdep.cpu.brand_string | tr -d '\\n'");
 #endif
-#if defined(LOOP_UNROLL)
+#if defined(LOOP_UNROLL_NO_DIV)
+  static const char cs[] = {"loop_unrolling_nodiv"};
+#elif defined(LOOP_UNROLL)
   static const char cs[] = {"loop_unrolling"};
 #elif defined(NO_DIV)
   static const char cs[] = {"nodiv"};
