@@ -1,5 +1,7 @@
-compiler,arch,processor,faster,count,mean
-GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,faster,84,35
+compiler,arch,processor,case,count,mean
+GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling,17,186
+GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,nodiv,84,35
 GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,original,17,186
-Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,faster,88,34
-Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,original,78,38
+Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling,17,186
+Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,nodiv,86,35
+Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,original,17,186

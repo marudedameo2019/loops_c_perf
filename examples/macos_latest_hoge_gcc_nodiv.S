@@ -1,5 +1,5 @@
 
-hoge_clang_original:	file format mach-o arm64
+hoge_gcc_nodiv:	file format mach-o arm64
 
 Disassembly of section __TEXT,__text:
 
@@ -24,10 +24,10 @@ Disassembly of section __TEXT,__text:
 1000004f0: 72b65a19    	movk	w25, #0xb2d0, lsl #16
 ;     srand(time(NULL));                 // FIX random seed
 1000004f4: d2800000    	mov	x0, #0x0                ; =0
-1000004f8: 94000090    	bl	0x100000738 <_time+0x100000738>
-1000004fc: 94000089    	bl	0x100000720 <_time+0x100000720>
+1000004f8: 9400008b    	bl	0x100000724 <_time+0x100000724>
+1000004fc: 94000084    	bl	0x10000070c <_time+0x10000070c>
 ;     int r = rand() % 10000;            // Get a random integer 0 <= r < 10k
-100000500: 94000085    	bl	0x100000714 <_time+0x100000714>
+100000500: 94000080    	bl	0x100000700 <_time+0x100000700>
 100000504: 9b367c08    	smull	x8, w0, w22
 100000508: d37ffd09    	lsr	x9, x8, #63
 10000050c: 936cfd08    	asr	x8, x8, #44
@@ -36,7 +36,7 @@ Disassembly of section __TEXT,__text:
 ;   clock_gettime(CLOCK_MONOTONIC, &ts);
 100000518: 910083e1    	add	x1, sp, #0x20
 10000051c: 528000c0    	mov	w0, #0x6                ; =6
-100000520: 94000074    	bl	0x1000006f0 <_time+0x1000006f0>
+100000520: 9400006f    	bl	0x1000006dc <_time+0x1000006dc>
 ;   return (int64_t)ts.tv_sec * 1000000000 + ts.tv_nsec;
 100000524: a9426ffa    	ldp	x26, x27, [sp, #0x20]
 ;     result += loops(40,r);
@@ -46,7 +46,7 @@ Disassembly of section __TEXT,__text:
 ;   clock_gettime(CLOCK_MONOTONIC, &ts);
 100000534: 910083e1    	add	x1, sp, #0x20
 100000538: 528000c0    	mov	w0, #0x6                ; =6
-10000053c: 9400006d    	bl	0x1000006f0 <_time+0x1000006f0>
+10000053c: 94000068    	bl	0x1000006dc <_time+0x1000006dc>
 ;   return (int64_t)ts.tv_sec * 1000000000 + ts.tv_nsec;
 100000540: a94227e8    	ldp	x8, x9, [sp, #0x20]
 100000544: cb1a0108    	sub	x8, x8, x26
@@ -61,22 +61,22 @@ Disassembly of section __TEXT,__text:
 10000055c: 54fffccb    	b.lt	0x1000004f4 <_main+0x44>
 ;   printf("%s,%s,", get_compiler_str(), get_arch_str());
 100000560: 90000008    	adrp	x8, 0x100000000 <_time+0x100000000>
-100000564: 911e7508    	add	x8, x8, #0x79d
+100000564: 911e1908    	add	x8, x8, #0x786
 100000568: 90000009    	adrp	x9, 0x100000000 <_time+0x100000000>
-10000056c: 911e4129    	add	x9, x9, #0x790
+10000056c: 911de529    	add	x9, x9, #0x779
 100000570: a90023e9    	stp	x9, x8, [sp]
 100000574: 90000000    	adrp	x0, 0x100000000 <_time+0x100000000>
-100000578: 911d1000    	add	x0, x0, #0x744
-10000057c: 94000063    	bl	0x100000708 <_time+0x100000708>
+100000578: 911cc000    	add	x0, x0, #0x730
+10000057c: 9400005e    	bl	0x1000006f4 <_time+0x1000006f4>
 ;   fflush(stdout);
 100000580: 90000028    	adrp	x8, 0x100004000 <_time+0x100004000>
 100000584: f9400d08    	ldr	x8, [x8, #0x18]
 100000588: f9400100    	ldr	x0, [x8]
-10000058c: 9400005c    	bl	0x1000006fc <_time+0x1000006fc>
+10000058c: 94000057    	bl	0x1000006e8 <_time+0x1000006e8>
 ;   system("sysctl -n machdep.cpu.brand_string | tr -d '\\n'");
 100000590: 90000000    	adrp	x0, 0x100000000 <_time+0x100000000>
-100000594: 911d2c00    	add	x0, x0, #0x74b
-100000598: 94000065    	bl	0x10000072c <_time+0x10000072c>
+100000594: 911cdc00    	add	x0, x0, #0x737
+100000598: 94000060    	bl	0x100000718 <_time+0x100000718>
 ;   printf(",%s,%d,%ld\n", cs, count, total/count/1000000);
 10000059c: 9ad40aa8    	udiv	x8, x21, x20
 1000005a0: d2869b69    	mov	x9, #0x34db             ; =13531
@@ -86,12 +86,12 @@ Disassembly of section __TEXT,__text:
 1000005b0: 9bc97d08    	umulh	x8, x8, x9
 1000005b4: d352fd08    	lsr	x8, x8, #18
 1000005b8: 90000009    	adrp	x9, 0x100000000 <_time+0x100000000>
-1000005bc: 911e1d29    	add	x9, x9, #0x787
+1000005bc: 911dcd29    	add	x9, x9, #0x773
 1000005c0: a900a3f4    	stp	x20, x8, [sp, #0x8]
 1000005c4: f90003e9    	str	x9, [sp]
 1000005c8: 90000000    	adrp	x0, 0x100000000 <_time+0x100000000>
-1000005cc: 911dec00    	add	x0, x0, #0x77b
-1000005d0: 9400004e    	bl	0x100000708 <_time+0x100000708>
+1000005cc: 911d9c00    	add	x0, x0, #0x767
+1000005d0: 94000049    	bl	0x1000006f4 <_time+0x1000006f4>
 ; }
 1000005d4: 52800000    	mov	w0, #0x0                ; =0
 1000005d8: a9487bfd    	ldp	x29, x30, [sp, #0x80]
@@ -125,143 +125,138 @@ Disassembly of section __TEXT,__text:
 ;   int32_t a[10000] = {0};            // Array of 10k elements initialized to 0
 10000063c: 910023e0    	add	x0, sp, #0x8
 100000640: 52938801    	mov	w1, #0x9c40             ; =40000
-100000644: 94000028    	bl	0x1000006e4 <_time+0x1000006e4>
+100000644: 94000023    	bl	0x1000006d0 <_time+0x1000006d0>
 100000648: d2800008    	mov	x8, #0x0                ; =0
 10000064c: 5284e209    	mov	w9, #0x2710             ; =10000
 100000650: 5280000b    	mov	w11, #0x0               ; =0
-100000654: 5280000a    	mov	w10, #0x0               ; =0
-100000658: b8687aac    	ldr	w12, [x21, x8, lsl #2]
-;       a[i] = a[i] + j % u;  // Simple sum
-10000065c: 1ad40d6d    	sdiv	w13, w11, w20
-100000660: 1b14adad    	msub	w13, w13, w20, w11
-100000664: 1100056e    	add	w14, w11, #0x1
-100000668: 1ad40dcf    	sdiv	w15, w14, w20
-10000066c: 1b14b9ee    	msub	w14, w15, w20, w14
-100000670: 0b0c01ac    	add	w12, w13, w12
-100000674: 0b0a01ca    	add	w10, w14, w10
-;     for (int j = 0; j < 10000; j++) {  // 10k inner loop iterations, per outer loop iteration
-100000678: 1100096b    	add	w11, w11, #0x2
-10000067c: 6b09017f    	cmp	w11, w9
-100000680: 54fffee1    	b.ne	0x10000065c <_loops+0x64>
-100000684: 0b0c014a    	add	w10, w10, w12
+100000654: b8687aaa    	ldr	w10, [x21, x8, lsl #2]
+100000658: 5284e20c    	mov	w12, #0x2710            ; =10000
+;       k = (k == u ? 0 : k);
+10000065c: 6b14017f    	cmp	w11, w20
+100000660: 1a8b03eb    	csel	w11, wzr, w11, eq
+;       a[i] = a[i] + k;  // Simple sum
+100000664: 0b0b014a    	add	w10, w10, w11
+;     for (int j = 0, k = 0; j < 10000; j++, k++) {  // 10k inner loop iterations, per outer loop iteration
+100000668: 1100056b    	add	w11, w11, #0x1
+10000066c: 7100058c    	subs	w12, w12, #0x1
+100000670: 54ffff61    	b.ne	0x10000065c <_loops+0x64>
 ;     a[i] += r;  // Add a random value to each element in array
-100000688: 0b13014a    	add	w10, w10, w19
-10000068c: b8287aaa    	str	w10, [x21, x8, lsl #2]
+100000674: 0b13014a    	add	w10, w10, w19
+100000678: b8287aaa    	str	w10, [x21, x8, lsl #2]
 ;   for (int i = 0; i < 10000; i++) {  // 10k outer loop iterations
-100000690: 91000508    	add	x8, x8, #0x1
-100000694: eb09011f    	cmp	x8, x9
-100000698: 54fffdc1    	b.ne	0x100000650 <_loops+0x58>
-10000069c: 910023e8    	add	x8, sp, #0x8
+10000067c: 91000508    	add	x8, x8, #0x1
+100000680: eb09011f    	cmp	x8, x9
+100000684: 54fffe61    	b.ne	0x100000650 <_loops+0x58>
+100000688: 910023e8    	add	x8, sp, #0x8
 ;   return a[r];
-1000006a0: b873d900    	ldr	w0, [x8, w19, sxtw #2]
-1000006a4: f85d83a8    	ldur	x8, [x29, #-0x28]
-1000006a8: 90000029    	adrp	x9, 0x100004000 <_time+0x100004000>
-1000006ac: f9400929    	ldr	x9, [x9, #0x10]
-1000006b0: f9400129    	ldr	x9, [x9]
-1000006b4: eb08013f    	cmp	x9, x8
-1000006b8: 540000e1    	b.ne	0x1000006d4 <_loops+0xdc>
-1000006bc: 914027ff    	add	sp, sp, #0x9, lsl #12   ; =0x9000
-1000006c0: 913143ff    	add	sp, sp, #0xc50
-1000006c4: a9427bfd    	ldp	x29, x30, [sp, #0x20]
-1000006c8: a9414ff4    	ldp	x20, x19, [sp, #0x10]
-1000006cc: a8c357f6    	ldp	x22, x21, [sp], #0x30
-1000006d0: d65f03c0    	ret
-1000006d4: 94000001    	bl	0x1000006d8 <_time+0x1000006d8>
+10000068c: b873d900    	ldr	w0, [x8, w19, sxtw #2]
+100000690: f85d83a8    	ldur	x8, [x29, #-0x28]
+100000694: 90000029    	adrp	x9, 0x100004000 <_time+0x100004000>
+100000698: f9400929    	ldr	x9, [x9, #0x10]
+10000069c: f9400129    	ldr	x9, [x9]
+1000006a0: eb08013f    	cmp	x9, x8
+1000006a4: 540000e1    	b.ne	0x1000006c0 <_loops+0xc8>
+1000006a8: 914027ff    	add	sp, sp, #0x9, lsl #12   ; =0x9000
+1000006ac: 913143ff    	add	sp, sp, #0xc50
+1000006b0: a9427bfd    	ldp	x29, x30, [sp, #0x20]
+1000006b4: a9414ff4    	ldp	x20, x19, [sp, #0x10]
+1000006b8: a8c357f6    	ldp	x22, x21, [sp], #0x30
+1000006bc: d65f03c0    	ret
+1000006c0: 94000001    	bl	0x1000006c4 <_time+0x1000006c4>
 
 Disassembly of section __TEXT,__stubs:
 
-00000001000006d8 <__stubs>:
-1000006d8: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-1000006dc: f9400610    	ldr	x16, [x16, #0x8]
-1000006e0: d61f0200    	br	x16
-1000006e4: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-1000006e8: f9401210    	ldr	x16, [x16, #0x20]
-1000006ec: d61f0200    	br	x16
-1000006f0: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-1000006f4: f9401610    	ldr	x16, [x16, #0x28]
-1000006f8: d61f0200    	br	x16
-1000006fc: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-100000700: f9401a10    	ldr	x16, [x16, #0x30]
-100000704: d61f0200    	br	x16
-100000708: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-10000070c: f9401e10    	ldr	x16, [x16, #0x38]
-100000710: d61f0200    	br	x16
-100000714: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-100000718: f9402210    	ldr	x16, [x16, #0x40]
-10000071c: d61f0200    	br	x16
-100000720: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-100000724: f9402610    	ldr	x16, [x16, #0x48]
-100000728: d61f0200    	br	x16
-10000072c: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-100000730: f9402a10    	ldr	x16, [x16, #0x50]
-100000734: d61f0200    	br	x16
-100000738: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
-10000073c: f9402e10    	ldr	x16, [x16, #0x58]
-100000740: d61f0200    	br	x16
+00000001000006c4 <__stubs>:
+1000006c4: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+1000006c8: f9400610    	ldr	x16, [x16, #0x8]
+1000006cc: d61f0200    	br	x16
+1000006d0: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+1000006d4: f9401210    	ldr	x16, [x16, #0x20]
+1000006d8: d61f0200    	br	x16
+1000006dc: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+1000006e0: f9401610    	ldr	x16, [x16, #0x28]
+1000006e4: d61f0200    	br	x16
+1000006e8: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+1000006ec: f9401a10    	ldr	x16, [x16, #0x30]
+1000006f0: d61f0200    	br	x16
+1000006f4: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+1000006f8: f9401e10    	ldr	x16, [x16, #0x38]
+1000006fc: d61f0200    	br	x16
+100000700: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+100000704: f9402210    	ldr	x16, [x16, #0x40]
+100000708: d61f0200    	br	x16
+10000070c: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+100000710: f9402610    	ldr	x16, [x16, #0x48]
+100000714: d61f0200    	br	x16
+100000718: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+10000071c: f9402a10    	ldr	x16, [x16, #0x50]
+100000720: d61f0200    	br	x16
+100000724: 90000030    	adrp	x16, 0x100004000 <_time+0x100004000>
+100000728: f9402e10    	ldr	x16, [x16, #0x58]
+10000072c: d61f0200    	br	x16
 
 Disassembly of section __TEXT,__cstring:
 
-0000000100000744 <__cstring>:
-100000744: 252c7325    	<unknown>
-100000748: 73002c73    	<unknown>
-10000074c: 74637379    	<unknown>
-100000750: 6e2d206c    	usubl2.8h	v12, v3, v13
-100000754: 63616d20    	<unknown>
-100000758: 70656468    	adr	x8, 0x1000cb3e7 <_time+0x1000cb3e7>
-10000075c: 7570632e    	<unknown>
-100000760: 6172622e    	<unknown>
-100000764: 735f646e    	<unknown>
-100000768: 6e697274    	uabdl2.4s	v20, v19, v9
-10000076c: 207c2067    	<unknown>
-100000770: 2d207274    	stp	s20, s28, [x19, #-0x100]
-100000774: 5c272064    	ldr	d4, 0x10004eb80 <_time+0x10004eb80>
-100000778: 2c00276e    	stnp	s14, s9, [x27]
-10000077c: 252c7325    	<unknown>
-100000780: 6c252c64    	stnp	d4, d11, [x3, #-0x1b0]
-100000784: 64 0a 00    	<unknown>
+0000000100000730 <__cstring>:
+100000730: 252c7325    	<unknown>
+100000734: 73002c73    	<unknown>
+100000738: 74637379    	<unknown>
+10000073c: 6e2d206c    	usubl2.8h	v12, v3, v13
+100000740: 63616d20    	<unknown>
+100000744: 70656468    	adr	x8, 0x1000cb3d3 <_time+0x1000cb3d3>
+100000748: 7570632e    	<unknown>
+10000074c: 6172622e    	<unknown>
+100000750: 735f646e    	<unknown>
+100000754: 6e697274    	uabdl2.4s	v20, v19, v9
+100000758: 207c2067    	<unknown>
+10000075c: 2d207274    	stp	s20, s28, [x19, #-0x100]
+100000760: 5c272064    	ldr	d4, 0x10004eb6c <_time+0x10004eb6c>
+100000764: 2c00276e    	stnp	s14, s9, [x27]
+100000768: 252c7325    	<unknown>
+10000076c: 6c252c64    	stnp	d4, d11, [x3, #-0x1b0]
+100000770: 64 0a 00    	<unknown>
 
 Disassembly of section __TEXT,__const:
 
-0000000100000787 <_main.cs>:
-100000787: 6769726f    	<unknown>
-10000078b: 6c616e69    	ldnp	d9, d27, [x19, #-0x1f0]
-10000078f: 616c4300    	<unknown>
+0000000100000773 <_main.cs>:
+100000773: 69646f6e    	ldpsw	x14, x27, [x27, #-0xe0]
+100000777: 6c430076    	ldnp	d22, d0, [x3, #0x30]
 
-0000000100000790 <_get_compiler_str.compiler_str>:
-100000790: 6e616c43    	umin.8h	v3, v2, v1
-100000794: 37312067    	tbnz	w7, #0x6, 0x100002ba0 <_time+0x100002ba0>
-100000798: 302e302e    	adr	x14, 0x10005cd9d <_time+0x10005cd9d>
-10000079c: 4d524100    	<unknown>
+0000000100000779 <_get_compiler_str.compiler_str>:
+100000779: 6e616c43    	umin.8h	v3, v2, v1
+10000077d: 37312067    	tbnz	w7, #0x6, 0x100002b89 <_time+0x100002b89>
+100000781: 302e302e    	adr	x14, 0x10005cd86 <_time+0x10005cd86>
+100000785: 4d524100    	<unknown>
 
-000000010000079d <_get_arch_str.arch_str>:
-10000079d: 364d5241    	tbz	w1, #0x9, 0xffffb1e5 <_time+0xffffb1e5>
-1000007a1: 34 00       	<unknown>
+0000000100000786 <_get_arch_str.arch_str>:
+100000786: 364d5241    	tbz	w1, #0x9, 0xffffb1ce <_time+0xffffb1ce>
+10000078a: 34 00       	<unknown>
 
 Disassembly of section __TEXT,__unwind_info:
 
-00000001000007a4 <__unwind_info>:
-1000007a4: 00000001    	udf	#0x1
-1000007a8: 0000001c    	udf	#0x1c
-1000007ac: 00000000    	udf	#0x0
-1000007b0: 0000001c    	udf	#0x1c
-1000007b4: 00000000    	udf	#0x0
-1000007b8: 0000001c    	udf	#0x1c
-1000007bc: 00000002    	udf	#0x2
-1000007c0: 000004b0    	udf	#0x4b0
-1000007c4: 00000040    	udf	#0x40
-1000007c8: 00000040    	udf	#0x40
-1000007cc: 000006d8    	udf	#0x6d8
-1000007d0: 00000000    	udf	#0x0
-1000007d4: 00000040    	udf	#0x40
+000000010000078c <__unwind_info>:
+10000078c: 00000001    	udf	#0x1
+100000790: 0000001c    	udf	#0x1c
+100000794: 00000000    	udf	#0x0
+100000798: 0000001c    	udf	#0x1c
+10000079c: 00000000    	udf	#0x0
+1000007a0: 0000001c    	udf	#0x1c
+1000007a4: 00000002    	udf	#0x2
+1000007a8: 000004b0    	udf	#0x4b0
+1000007ac: 00000040    	udf	#0x40
+1000007b0: 00000040    	udf	#0x40
+1000007b4: 000006c4    	udf	#0x6c4
+1000007b8: 00000000    	udf	#0x0
+1000007bc: 00000040    	udf	#0x40
 		...
-1000007e4: 00000003    	udf	#0x3
-1000007e8: 0002000c    	<unknown>
-1000007ec: 00020014    	<unknown>
-1000007f0: 00000000    	udf	#0x0
-1000007f4: 01000148    	<unknown>
-1000007f8: 0400001f    	add	z31.b, p0/m, z31.b, z0.b
-1000007fc: 04000003    	add	z3.b, p0/m, z3.b, z0.b
-100000800: 00000000    	udf	#0x0
+1000007cc: 00000003    	udf	#0x3
+1000007d0: 0002000c    	<unknown>
+1000007d4: 00020014    	<unknown>
+1000007d8: 00000000    	udf	#0x0
+1000007dc: 01000148    	<unknown>
+1000007e0: 0400001f    	add	z31.b, p0/m, z31.b, z0.b
+1000007e4: 04000003    	add	z3.b, p0/m, z3.b, z0.b
+1000007e8: 00000000    	udf	#0x0
 
 Disassembly of section __DATA_CONST,__got:
 
