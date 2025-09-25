@@ -1,14 +1,16 @@
 FILE="hoge.csv"
-echo "compiler,arch,processor,faster,count,mean" | tee $FILE
+echo "compiler,arch,processor,case,count,mean" | tee $FILE
 for compiler in gcc clang; do
-  for faster in "-DFASTER_CODE" "-DDUMMY"; do
-    if [ "$faster" = "-DFASTER_CODE" ]; then
-      faster_str=faster
+  for c in "-DLOOP_UNROLL" "-DNO_DIV" "-DDUMMY"; do
+    if [ "$c" = "-DLOOP_UNROLL" ]; then
+      nodiv_str=loopunroll
+    elif [ "$c" = "-DNO_DIV" ]; then
+      nodiv_str=nodiv
     else
-      faster_str=original
+      nodiv_str=original
     fi
-    exe="hoge_${compiler}_${faster_str}"
-    "$compiler" "$faster" -g -O3 hoge.c -o "$exe"
+    exe="hoge_${compiler}_${nodiv_str}"
+    "$compiler" "$c" -g -O3 hoge.c loops.c -o "$exe"
     objdump -SDC "$exe" > "${exe}.S"
     "./${exe}"
   done
