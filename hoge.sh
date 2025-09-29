@@ -3,7 +3,6 @@ is_real() {
   compiler_path=$(command -v "$compiler")
   target_path=$(readlink -f "$compiler_path")
   target_file=$(basename "$target_path")
-  xcrun gcc --version
   echo "$target_file" | grep "$compiler" >/dev/null
   return $?
 }
