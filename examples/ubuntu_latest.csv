@@ -1,11 +1,13 @@
 compiler,arch,processor,case,count,mean
 /usr/bin/x86_64-linux-gnu-gcc-13: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ae14c7eee78e5a9399f369cea79657f21b73aead, for GNU/Linux 3.2.0, stripped
+41993 lrwxrwxrwx 1 root root 6 Jan 31  2024 /usr/bin/gcc -> gcc-13*
 41925 -rwxr-xr-x 1 root root 1023032 Sep  4  2024 /usr/bin/x86_64-linux-gnu-gcc-13*
 GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling_nodiv,77,39
 GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling,17,186
-GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,nodiv,83,36
+GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,nodiv,84,35
 GCC 13.3,x86-64,AMD EPYC 7763 64-Core Processor,original,17,186
 /usr/lib/llvm-18/bin/clang: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=ee95d17c66c8efd6f7e8518518fbc76b988ce47c, stripped
+76999 lrwxrwxrwx 1 root root 23 May 27  2024 /usr/bin/clang -> /etc/alternatives/clang*
 1838593 -rwxr-xr-x 1 root root 140592 May 27  2024 /usr/lib/llvm-18/bin/clang*
 Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling_nodiv,90,33
 Clang 18.1.3,x86-64,AMD EPYC 7763 64-Core Processor,loop_unrolling,17,186
