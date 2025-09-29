@@ -1,37 +1,9 @@
-set -x
-# is_real() {
-#   compiler=$1
-#   compiler_path=$(command -v "$compiler")
-#   target_path=$(readlink -f "$compiler_path")
-#   target_file=$(basename "$target_path")
-#   echo "$target_file" | grep "$compiler" >/dev/null
-#   return $?
-# }
 is_real() {
   compiler=$1
-  target_path=""
-
-  if [ "$(uname -s)" = "Darwin" ]; then
-    if command -v xcrun >/dev/null 2>&1; then
-      target_path=$(xcrun -f "$compiler" 2>/dev/null)
-    fi
-  else
-    target_path=$(command -v "$compiler")
-  fi
-
-  if command -v "$compiler" >/dev/null 2>&1; then
-    target_path=$(readlink -f "$target_path")
-    file "$target_path"
-    ls -lAFi $(command -v "$compiler")
-    ls -lAFi "$(command -v xcrun)"
-    ls -lAFi "$target_path"
-  else
-    return 1
-  fi
-
+  compiler_path=$(command -v "$compiler")
+  target_path=$(readlink -f "$compiler_path")
   target_file=$(basename "$target_path")
   echo "$target_file" | grep "$compiler" >/dev/null
-  
   return $?
 }
 
