@@ -22,6 +22,7 @@ is_real() {
   if command -v "$compiler" >/dev/null 2>&1; then
     target_path=$(readlink -f "$target_path")
     file "$target_path"
+    ls -lAFi $(command -v "$compiler")
     ls -lAFi "$(command -v xcrun)"
     ls -lAFi "$target_path"
   else
