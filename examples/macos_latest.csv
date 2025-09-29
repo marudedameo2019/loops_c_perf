@@ -2,14 +2,18 @@ compiler,arch,processor,case,count,mean
 /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64:Mach-O 64-bit executable arm64]
 /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc (for architecture x86_64):	Mach-O 64-bit executable x86_64
 /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc (for architecture arm64):	Mach-O 64-bit executable arm64
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,29,103
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,43,70
-Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,27,111
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,37,81
+1152921500312524432 -rwxr-xr-x  1 root  wheel  117392 Aug 16 18:44 /usr/bin/xcrun*
+1170499 -rwxr-xr-x  1 runner  staff  101088 Sep 22 06:08 /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc*
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,30,102
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,45,67
+Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,30,101
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,44,68
 /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64]
 /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (for architecture x86_64):	Mach-O 64-bit executable x86_64
 /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (for architecture arm64):	Mach-O 64-bit executable arm64
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,24,127
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,30,100
-Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,23,132
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,29,104
+1152921500312524432 -rwxr-xr-x  1 root  wheel  117392 Aug 16 18:44 /usr/bin/xcrun*
+1142941 -rwxr-xr-x  1 runner  staff  264942528 Sep 22 06:08 /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang*
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,30,102
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,44,68
+Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,30,101
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,45,66
