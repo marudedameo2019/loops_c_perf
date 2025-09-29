@@ -1,21 +1,9 @@
 compiler,arch,processor,case,count,mean
-/Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64:Mach-O 64-bit executable arm64]
-/Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc (for architecture x86_64):	Mach-O 64-bit executable x86_64
-/Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc (for architecture arm64):	Mach-O 64-bit executable arm64
-1152921500312522898 -rwxr-xr-x  78 root  wheel  118864 Aug 16 18:44 /usr/bin/gcc*
-1152921500312524432 -rwxr-xr-x  1 root  wheel  117392 Aug 16 18:44 /usr/bin/xcrun*
-1170499 -rwxr-xr-x  1 runner  staff  101088 Sep 22 06:08 /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/gcc*
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,29,105
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,45,67
-Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,30,101
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,37,81
-/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64]
-/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (for architecture x86_64):	Mach-O 64-bit executable x86_64
-/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (for architecture arm64):	Mach-O 64-bit executable arm64
-1152921500312522898 -rwxr-xr-x  78 root  wheel  118864 Aug 16 18:44 /usr/bin/clang*
-1152921500312524432 -rwxr-xr-x  1 root  wheel  117392 Aug 16 18:44 /usr/bin/xcrun*
-1142941 -rwxr-xr-x  1 runner  staff  264942528 Sep 22 06:08 /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang*
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,24,126
-Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,30,101
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,26,115
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,36,85
 Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,28,110
-Clang 17.0.0,ARM64,Apple M1 (Virtual),original,41,73
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,41,74
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling_nodiv,29,106
+Clang 17.0.0,ARM64,Apple M1 (Virtual),loop_unrolling,36,85
+Clang 17.0.0,ARM64,Apple M1 (Virtual),nodiv,26,117
+Clang 17.0.0,ARM64,Apple M1 (Virtual),original,33,91
