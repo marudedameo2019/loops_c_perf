@@ -1,6 +1,33 @@
+# is_real() {
+#   compiler=$1
+#   compiler_path=$(command -v "$compiler")
+#   target_path=$(readlink -f "$compiler_path")
+#   target_file=$(basename "$target_path")
+#   echo "$target_file" | grep "$compiler" >/dev/null
+#   return $?
+# }
 is_real() {
   compiler=$1
-  echo "$(readlink -f "$(command -v $compiler)")" | grep "$compiler" >/dev/null
+  target_path=""
+
+  if [ "$(uname -s)" = "Darwin" ]; then
+    if command -v xcrun >/dev/null 2>&1; then
+      target_path=$(xcrun -f "$compiler" 2>/dev/null)
+    fi
+  fi
+
+  if [ -z "$target_path" ]; then
+    if command -v "$compiler" >/dev/null 2>&1; then
+      target_path=$(command -v "$compiler")
+      target_path=$(readlink -f "$target_path" 2>/dev/null || echo "$target_path")
+    else
+      return 1
+    fi
+  fi
+
+  target_file=$(basename "$target_path")
+  echo "$target_file" | grep "$compiler" >/dev/null
+  
   return $?
 }
 
