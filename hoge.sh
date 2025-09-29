@@ -1,3 +1,4 @@
+set -x
 # is_real() {
 #   compiler=$1
 #   compiler_path=$(command -v "$compiler")
