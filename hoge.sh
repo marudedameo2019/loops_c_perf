@@ -15,15 +15,14 @@ is_real() {
     if command -v xcrun >/dev/null 2>&1; then
       target_path=$(xcrun -f "$compiler" 2>/dev/null)
     fi
+  else
+    target_path=$(command -v "$compiler")
   fi
 
-  if [ -z "$target_path" ]; then
-    if command -v "$compiler" >/dev/null 2>&1; then
-      target_path=$(command -v "$compiler")
-      target_path=$(readlink -f "$target_path" 2>/dev/null || echo "$target_path")
-    else
-      return 1
-    fi
+  if command -v "$compiler" >/dev/null 2>&1; then
+    target_path=$(readlink -f "$target_path")
+  else
+    return 1
   fi
 
   target_file=$(basename "$target_path")
